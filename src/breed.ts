@@ -4,7 +4,7 @@ import { loadBinancePrices } from './binance'
 
 const PARSE_REGEX = /^\/breed(?:\s+([0-6])(?:[^\d]+([0-6])(?:[^\d]+([1-7])\s?)?)?)?$/
 const BREED_SLP_COST = [150, 300, 450, 750, 1200, 1950, 3150]
-const BREED_AXS_COST = [4, 4, 4, 4, 4, 4, 4]
+const BREED_AXS_COST = [2, 2, 2, 2, 2, 2, 2]
 
 export const breedController = async (ctx: NarrowedContext<Context, MountMap['text']>) => {
     const match = ctx.message.text.match(PARSE_REGEX)!
@@ -78,8 +78,8 @@ const detailedInfoTpl = (one: number, two: number, count: number, SLP: number, A
     return `<pre>First Axie:         ${one} 
 Second Axie:        ${two} 
 Eggs amount:        ${count}
-Need AXS:  ${needAXSFmt}
-Need SLP:  ${needSLPFmt}
+Need AXS:       ${needAXSFmt}
+Need SLP:       ${needSLPFmt}
 Breed cost:   ${breedCostFmt} USDT
 Cost per egg: ${eggCostFmt} USDT</pre>`
 }
