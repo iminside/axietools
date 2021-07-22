@@ -78,8 +78,8 @@ const detailedInfoTpl = (one: number, two: number, count: number, SLP: number, A
     return `<pre>First Axie:         ${one} 
 Second Axie:        ${two} 
 Eggs amount:        ${count}
-Need AXS:       ${needAXSFmt}
-Need SLP:       ${needSLPFmt}
+Need AXS:        ${needAXSFmt}
+Need SLP:        ${needSLPFmt}
 Breed cost:   ${breedCostFmt} USDT
 Cost per egg: ${eggCostFmt} USDT</pre>`
 }
