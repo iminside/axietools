@@ -58,20 +58,28 @@ const replyCommonInfo = async (ctx: NarrowedContext<Context, MountMap['text']>) 
 }
 
 const detailedInfoTpl = (one: number, two: number, count: number, SLP: number, AXS: number) => {
-    let breedCost = 0
+    let needAXS = 0
+    let needSLP = 0
 
     for (let i = 0; i < count; i++) {
-        breedCost += calcBreedCost(one + i, SLP, AXS)
-        breedCost += calcBreedCost(two + i, SLP, AXS)
+        needAXS += BREED_AXS_COST[one + i]
+        needAXS += BREED_AXS_COST[two + i]
+        needSLP += BREED_SLP_COST[one + i]
+        needSLP += BREED_SLP_COST[two + i]
     }
 
+    const breedCost = needAXS * AXS + needSLP * SLP
     const eggCost = breedCost / count
+    const needAXSFmt = needAXS.toString().padStart(4, ' ')
+    const needSLPFmt = needSLP.toString().padStart(4, ' ')
     const breedCostFmt = breedCost.toFixed(2).padStart(7, ' ')
     const eggCostFmt = eggCost.toFixed(2).padStart(7, ' ')
 
     return `<pre>First Axie:         ${one} 
 Second Axie:        ${two} 
 Eggs amount:        ${count}
+Need AXS:  ${needAXSFmt}
+Need SLP:  ${needSLPFmt}
 Breed cost:   ${breedCostFmt} USDT
 Cost per egg: ${eggCostFmt} USDT</pre>`
 }
