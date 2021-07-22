@@ -1,0 +1,22 @@
+{
+    "include": ["src"],
+    "compilerOptions": {
+        "module": "UMD",
+        "target": "ES2015",
+        "lib": ["esnext", "dom"],
+        "importHelpers": true,
+        "sourceMap": true,
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "rootDir": "./src",
+        "baseUrl": "./",
+        "paths": {
+            "*": ["src/*", "node_modules/*"]
+        }
+    }
+}
