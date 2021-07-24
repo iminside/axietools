@@ -9,7 +9,7 @@
         "url": "https://github.com/iminside/axietools.git"
     },
     "scripts": {
-        "start": "ts-node-dev ./src/index.ts",
+        "start": "ts-node-dev -r dotenv/config ./src/index.ts",
         "build": "rollup -c"
     },
     "devDependencies": {
