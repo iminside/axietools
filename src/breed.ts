@@ -29,7 +29,7 @@ const replyDetailedInfo = async (
     two: number,
     count: number
 ) => {
-    const { SLP, AXS } = await loadBinancePrices()
+    const { SLP, AXS, ETH } = await loadBinancePrices()
 
     if (one + count > 7) {
         const max = 7 - one
@@ -45,7 +45,7 @@ const replyDetailedInfo = async (
         return
     }
 
-    const response = detailedInfoTpl(one, two, count, SLP, AXS)
+    const response = detailedInfoTpl(one, two, count, SLP, AXS, ETH)
 
     ctx.replyWithHTML(response)
 }
@@ -57,7 +57,7 @@ const replyCommonInfo = async (ctx: NarrowedContext<Context, MountMap['text']>) 
     ctx.replyWithHTML(response)
 }
 
-const detailedInfoTpl = (one: number, two: number, count: number, SLP: number, AXS: number) => {
+const detailedInfoTpl = (one: number, two: number, count: number, SLP: number, AXS: number, ETH: number) => {
     let needAXS = 0
     let needSLP = 0
 
@@ -69,23 +69,28 @@ const detailedInfoTpl = (one: number, two: number, count: number, SLP: number, A
     }
 
     const breedCost = needAXS * AXS + needSLP * SLP
+    const breedCostETH = breedCost / ETH
     const eggCost = breedCost / count
-    const needAXSFmt = needAXS.toString().padStart(4, ' ')
-    const needSLPFmt = needSLP.toString().padStart(4, ' ')
+    const eggCostETH = eggCost / ETH
+    const needAXSFmt = needAXS.toString().padStart(5, ' ')
+    const needSLPFmt = needSLP.toString().padStart(5, ' ')
     const breedCostFmt = breedCost.toFixed(2).padStart(7, ' ')
+    const breedCostETHFmt = breedCostETH.toFixed(2)
     const eggCostFmt = eggCost.toFixed(2).padStart(7, ' ')
+    const eggCostETHFmt = eggCostETH.toFixed(2)
 
-    return `<pre>First Axie:         ${one} 
-Second Axie:        ${two} 
-Eggs amount:        ${count}
-Need AXS:        ${needAXSFmt}
-Need SLP:        ${needSLPFmt}
-Breed cost:   ${breedCostFmt} USDT
-Cost per egg: ${eggCostFmt} USDT</pre>`
+    return `<pre>First Axie:    ${one} 
+Second Axie:   ${two} 
+Eggs amount:   ${count}
+Need AXS:  ${needAXSFmt}
+Need SLP:  ${needSLPFmt}
+----------------
+Total:   ${breedCostFmt} USD | ${breedCostETHFmt} ETH
+Per egg: ${eggCostFmt} USD | ${eggCostETHFmt} ETH</pre>`
 }
 
 const breedCommonInfoTlp = (SLP: number, AXS: number) => {
-    return `<pre>  | AXS |  SLP |    USDT |   PER 2 
+    return `<pre>  | AXS |  SLP |     USD |   PER 2 
 ----------------------------------
 ${breedCommonInfoRowTpl(0, SLP, AXS)}
 ${breedCommonInfoRowTpl(1, SLP, AXS)}
