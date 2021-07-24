@@ -10,11 +10,11 @@ export const rateController = async (ctx: Context) => {
 }
 
 function createRateResponse(SLP: number, AXS: number, ETH: number) {
-    return `<code><b>Current Binance prices (USDT)</b>
+    return `<pre><b>Current Binance prices (USDT)</b>
 SLP: ${formatPrice(SLP)}
 AXS: ${formatPrice(AXS)}
 ETH: ${formatPrice(ETH)}
-</code>`
+</pre>`
 }
 
 function formatPrice(amount: number) {
