@@ -2,7 +2,7 @@ import { Context, NarrowedContext } from 'telegraf'
 import { MountMap } from 'telegraf/typings/telegram-types'
 import { loadBinancePrices } from './binance'
 
-const PARSE_REGEX = /^\/breed(?:\s+([0-6])(?:[^\d]+([0-6])(?:[^\d]+([1-7])\s?)?)?)?$/
+const PARSE_REGEX = /^\/breed(?:\s+([0-6])(?:([0-6])([1-7])?)?)?$/
 const BREED_SLP_COST = [150, 300, 450, 750, 1200, 1950, 3150]
 const BREED_AXS_COST = [2, 2, 2, 2, 2, 2, 2]
 
