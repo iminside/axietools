@@ -6,7 +6,7 @@ import { helpController } from './help'
 
 const bot = new Telegraf(process.env.API_TOKEN!)
 
-bot.start((ctx) => ctx.reply('Welcome to Axie Tools'))
+bot.start((ctx) => ctx.reply('Welcome to Axie Tools, say /help to see the list of commands'))
 
 bot.help(helpController)
 

@@ -17,11 +17,16 @@ export const exchangeController = async (ctx: NarrowedContext<Context, MountMap[
     const result = await exchange(from as Coin, to as Coin, amount)
     const fromFmt = from.toUpperCase()
     const toFmt = to.toUpperCase()
+    const amountFmt = amount.toString()
     const resultFmt = result.toFixed(2)
+    const response = createExchangeResponse(fromFmt, toFmt, amountFmt, resultFmt)
 
-    ctx.replyWithHTML(`<pre>Exchange info
-${amount} ${fromFmt} ~> ${resultFmt} ${toFmt}</pre>`)
+    ctx.replyWithHTML(response)
 }
+
+const createExchangeResponse = (from: string, to: string, amount: string, result: string) =>
+    `<pre>Exchange info
+${amount} ${from} ~> ${result} ${to}</pre>`
 
 type Coin = 'usd' | 'slp' | 'axs' | 'eth'
 
