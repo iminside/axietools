@@ -75,9 +75,9 @@ const detailedInfoTpl = (one: number, two: number, count: number, SLP: number, A
     const needAXSFmt = needAXS.toString().padStart(5, ' ')
     const needSLPFmt = needSLP.toString().padStart(5, ' ')
     const breedCostFmt = breedCost.toFixed(2).padStart(7, ' ')
-    const breedCostETHFmt = breedCostETH.toFixed(2)
+    const breedCostETHFmt = breedCostETH.toFixed(3)
     const eggCostFmt = eggCost.toFixed(2).padStart(7, ' ')
-    const eggCostETHFmt = eggCostETH.toFixed(2)
+    const eggCostETHFmt = eggCostETH.toFixed(3)
 
     return `<pre>First Axie:    ${one} 
 Second Axie:   ${two} 
