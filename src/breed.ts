@@ -3,8 +3,8 @@ import { MountMap } from 'telegraf/typings/telegram-types'
 import { loadBinancePrices } from './binance'
 
 const PARSE_REGEX = /^\/breed(?:\s+([0-6])(?:([0-6])([1-7])?)?)?$/
-const BREED_SLP_COST = [150, 300, 450, 750, 1200, 1950, 3150]
-const BREED_AXS_COST = [1, 1, 1, 1, 1, 1, 1]
+const BREED_SLP_COST = [300, 450, 750, 1200, 1950, 3150, 5100]
+const BREED_AXS_COST = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 
 export const breedController = async (ctx: NarrowedContext<Context, MountMap['text']>) => {
     const match = ctx.message.text.match(PARSE_REGEX)!
