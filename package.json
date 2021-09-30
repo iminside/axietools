@@ -10,7 +10,8 @@
     },
     "scripts": {
         "start": "ts-node-dev -r dotenv/config ./src/index.ts",
-        "build": "rollup -c"
+        "build": "rollup -c",
+        "run": "node ./dist/index.js"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^19.0.1",
