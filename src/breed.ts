@@ -113,7 +113,7 @@ const breedCommonInfoRowTpl = (breedNumber: number, SLP: number, AXS: number) =>
     const breedCostFmt = formatBreedCost(breedCost)
     const per2costFmt = formatBreedCost(per2cost)
 
-    return `${breedNumber} |   ${axsCostFmt} | ${slpCostFmt} | ${breedCostFmt} | ${per2costFmt}`
+    return `${breedNumber} | ${axsCostFmt} | ${slpCostFmt} | ${breedCostFmt} | ${per2costFmt}`
 }
 
 const calcBreedCost = (breedNumber: number, SLP: number, AXS: number) => {
